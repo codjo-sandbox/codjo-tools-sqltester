@@ -5,15 +5,16 @@
  */
 package net.codjo.tools.sqltester.batch.task;
 
+import junit.framework.TestCase;
+import net.codjo.tools.sqltester.batch.ConnectionMetaData;
+import org.apache.tools.ant.BuildException;
+import org.junit.Ignore;
+
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
-import junit.framework.TestCase;
-import net.codjo.tools.sqltester.batch.ConnectionMetaData;
-import org.apache.tools.ant.BuildException;
-import org.junit.Ignore;
 
 import static net.codjo.tools.sqltester.batch.task.util.Constants.NEW_LINE;
 
@@ -53,7 +54,7 @@ public class ExecOracleSqlFilesTaskTest extends TestCase {
             assertTrue(e.getMessage().trim().contains(
                   "ERROR:" + NEW_LINE
                   + "ORA-12154: TNS:could not resolve the connect identifier specified"));
-            metadata.setBase("IDWDEV2");
+            metadata.setBase("STEDEV2");
             assertFalse(doesTableExist("AP_TEST"));
             assertFalse(doesTableExist("AP_TEST2"));
         }
