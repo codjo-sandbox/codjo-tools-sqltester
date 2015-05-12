@@ -36,8 +36,9 @@ public class ExecMysqlSqlFilesTaskTest extends TestCase {
             String expectedMessage =
                   "Erreur lors de l'execution de la commande." + NEW_LINE
                   + "Error message :" + NEW_LINE
-                  + "ERROR 1064 (42000) at line 3: Erreur de syntaxe près de 'toto   not null" + NEW_LINE
-                  + ") ENGINE=InnoDB' à la ligne 3" + NEW_LINE
+                  + "ERROR 1064 (42000) at line 3: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'toto   not null"
+                  + NEW_LINE
+                  + ") ENGINE=InnoDB' at line 3" + NEW_LINE
                   + "Output message :";
             assertEquals(expectedMessage, e.getMessage().trim());
             assertTrue(doesTableExist("AP_TEST"));
@@ -57,7 +58,7 @@ public class ExecMysqlSqlFilesTaskTest extends TestCase {
         catch (BuildException e) {
             String expectedMessage = "Erreur lors de l'execution de la commande." + NEW_LINE
                                      + "Error message :" + NEW_LINE
-                                     + "ERROR 1049 (42000): Base 'BIDON' inconnue"
+                                     + "ERROR 1049 (42000): Unknown database 'BIDON'"
                                      + NEW_LINE
                                      + "Output message :";
             assertEquals(expectedMessage, e.getMessage().trim());
