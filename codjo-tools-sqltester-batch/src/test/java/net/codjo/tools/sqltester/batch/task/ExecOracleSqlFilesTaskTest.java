@@ -44,6 +44,7 @@ public class ExecOracleSqlFilesTaskTest extends TestCase {
 
     public void test_execute_connectionWithError() throws Exception {
         String file = getClass().getResource("ExecSqlFiles_KO_oracle.txt").getFile();
+        String validBase = metadata.getBase();
         metadata.setBase("BIDON");
         try {
             execSqlFilesTask = new ExecOracleSqlFilesTask(file, metadata);
@@ -54,7 +55,7 @@ public class ExecOracleSqlFilesTaskTest extends TestCase {
             assertTrue(e.getMessage().trim().contains(
                   "ERROR:" + NEW_LINE
                   + "ORA-12154: TNS:could not resolve the connect identifier specified"));
-            metadata.setBase("STEDEV2");
+            metadata.setBase(validBase);
             assertFalse(doesTableExist("AP_TEST"));
             assertFalse(doesTableExist("AP_TEST2"));
         }
